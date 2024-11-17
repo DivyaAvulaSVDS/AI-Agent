@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Extractor</title>
+    <style>
+        /* Reset some basic styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Set background image */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://img.freepik.com/premium-vector/gradient-glassmorphism-background_23-2149437418.jpg'); /* Replace with the correct relative path */
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* Main container style */
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.8); /* Transparent background for readability */
+            border-radius: 10px;
+            padding: 30px;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            animation: borderColorChange 1s infinite; /* Animation to change border color */
+        }
+
+        .container:hover {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        /* Border color animation */
+        @keyframes borderColorChange {
+            0% {
+                border: 3px solid #FF6347; /* Red */
+            }
+            25% {
+                border: 3px solid #32CD32; /* Green */
+            }
+            50% {
+                border: 3px solid #1E90FF; /* Blue */
+            }
+            75% {
+                border: 3px solid #FFD700; /* Yellow */
+            }
+            100% {
+                border: 3px solid #FF6347; /* Red */
+            }
+        }
+
+        /* Form Heading */
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        /* Form Input Fields */
+        label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #555;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+            transition: border 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        /* Submit Button */
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        /* Small Screen Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            input[type="text"], button {
+                font-size: 14px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Data Extractor</h1>
+        <form action="/process" method="POST">
+            <!-- File Path Input -->
+            <label for="file_path">Enter CSV File Path:</label>
+            <input type="text" name="file_path" placeholder="Enter full path to CSV file" required>
+
+            <!-- Entity Column Input -->
+            <label for="entity_column">Enter Entity Column Name (e.g., Company Name):</label>
+            <input type="text" name="entity_column" required>
+
+            <!-- Column Names Input -->
+            <label for="columns">Enter Columns to Extract (comma separated):</label>
+            <input type="text" name="columns" placeholder="e.g., Founder Name, CEO Name, Locations" required>
+
+            <!-- Submit Button -->
+            <button type="submit">Process Data</button>
+        </form>
+    </div>
+
+</body>
+</html>
